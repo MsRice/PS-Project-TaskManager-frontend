@@ -1,0 +1,15 @@
+.logo--wrapper {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.logo--img{
+  border-radius: 12px;
+  height: calc(var(--contact-height) / 1.5);
+  opacity: .7
+}
