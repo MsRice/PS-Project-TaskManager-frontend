@@ -1,11 +1,34 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { useAuthentication } from '../../contexts/auth/AuthenticationContext';
+import { useModal } from '../../contexts/modal/ModalContext';
+import Nav from './Nav';
+import Contact from '../ui/Contact';
+import AddTask from '../ui/AddTask';
+import AddTaskPage from './AddTaskPage';
+import SideBar from './SideBar';
 
 const HomeLayout = () => {
+
+    const {isSidebarOpen , isFormOpen} = useModal()
+    const {user} = useAuthentication()
     return (
-        <div>
-            Home Layout
-            <Outlet />
+        <div className='container'>
+            <div className={`row row-modal-${isSidebarOpen}`}>
+                {!isFormOpen?
+                <div className={`main__section--wrapper ${!user ? 'login__section--wrapper' :''}`}>
+                    <Nav />
+                    <Contact />
+                    <Outlet />
+                    {!isSidebarOpen && user && <AddTask />}
+                </div>
+                :
+                <>
+                <Nav />
+                <AddTaskPage />
+                </>
+                }
+            </div>
+            {isSidebarOpen && <SideBar />}
         </div>
     );
 }

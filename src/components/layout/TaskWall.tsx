@@ -1,0 +1,56 @@
+import { useTasks } from "../../contexts/task/TasksContext";
+import { useTheme } from '../../contexts/themes/ThemeContext';
+import TaskLess from '../ui/TaskLess';
+import TaskMore from '../ui/TaskMore';
+const TaskWall = () => {
+
+    const { openTasks } = useTheme()
+    const { taskList } = useTasks()
+    
+    console.log(taskList)
+    
+    return (
+        <div className='task-wall--wrapper'>
+            
+            {taskList?.filter(
+                task => task.status === false
+            ).map(task => {
+
+                const isOpen = openTasks[task._id] ?? false
+
+                return(
+
+                    <div 
+                        key={task._id} 
+                        className={`
+                            task__sp--wrapper ${!isOpen? 'more' : 'less'}
+                             ${openTasks[task._id + '-add'] ? 'expanded' : `${openTasks[task._id + '-add']}`}
+                            `} >
+
+                    {!isOpen? <TaskLess task={task}/> : <TaskMore task={task} />}
+                    </div>
+                )
+            })}
+
+            <div className='completed-dividor'> Completed </div>
+
+            {taskList?.filter(
+                task => task.status === true
+            ).map(task => {
+
+                const isOpen = openTasks[task._id] ?? false
+
+                return(
+
+                    <div key={task._id} className={`task__sp--wrapper ${!isOpen? 'more' : 'less'}`} >
+
+                    {!isOpen? <TaskLess task={task}/> : <TaskMore task={task} />}
+                    </div>
+                )
+            })}
+
+        </div>
+    );
+}
+
+export default TaskWall;
