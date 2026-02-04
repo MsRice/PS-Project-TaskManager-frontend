@@ -24,11 +24,15 @@ const TaskMore = ({task}:TaskUIProps) => {
 
 
     const handleAddTodo = (taskId :string) =>{
-        event?.preventDefault()
+     
 
         addTodo(taskId , addText)
-        setAddTaskModal(o => !o)
+        setAddTaskModal(false)
         setAddText('')
+        setOpenTasks(o => ({
+            ...o,
+            [`${task._id}-add`]: false
+        }))
 
     }
 
@@ -59,9 +63,10 @@ const TaskMore = ({task}:TaskUIProps) => {
             [task._id]: true,       
             [`${task._id}-add`]: true
         }))
+        
     }
 
-      const closeAddTodo = () => {
+    const closeAddTodo = () => {
         setAddTaskModal(false)
         setOpenTasks(o => ({
             ...o,
@@ -78,7 +83,8 @@ const TaskMore = ({task}:TaskUIProps) => {
             <div className='more__section--wrapper'>
 
                 <h3 className='more__section--title'>{task.title}</h3>
-                <div className='more__info--wrapper'>
+                
+                <div className='more__info--wrapper'> 
                     <div className='more__section--header'>
                         <span className='more__section--area-title' style={{'--area-color': task.area.color , backgroundColor: `${task.area.color}6e`} as React.CSSProperties}>{task.area.name}</span>
                         <p className='more__section--desc'>{task.description}</p>

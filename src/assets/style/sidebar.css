@@ -1,12 +1,11 @@
-
 .backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    width: 20%;
-    opacity: 0;
-    pointer-events: none;
-    
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  width: 20%;
+  opacity: 0;
+  pointer-events: none;
+
   transition: opacity 0.25s ease;
 }
 
@@ -14,41 +13,39 @@
   opacity: 1;
   pointer-events: auto;
 }
-.sidebar--wrapper{
-    
-    display: none;
-    position: fixed;
+.sidebar--wrapper {
+  display: none;
+  position: fixed;
 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
-    top: 0;
-    right: 0;
-    
-    height: 100vh;
-    height: 100dvh;
-    width: 90%;
-    
-    background-color: var(--bg-yellow);
-    border-radius: 8px 0 0 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    padding:  0 10px;
-    text-align: center;
-    
-    transform: translateX(100%);
-    transition: transform 0.45s ease-in-out;
+  top: 0;
+  right: 0;
+
+  height: 100vh;
+  height: 100dvh;
+  width: 90%;
+
+  background-color: var(--bg-yellow);
+  border-radius: 8px 0 0 8px;
+
+  padding: 0 10px;
+  text-align: center;
+
+  transform: translateX(100%);
+  transition: transform 0.45s ease-in-out;
 }
 
-.sidebar--wrapper.open{
-    display: flex;
-    transform: translateX(0);
+.sidebar--wrapper.open {
+  display: flex;
+  transform: translateX(0);
 }
-.open-btn--wrapper.hidden{
-    display: none;
-    
-} 
-.sidebarnav--wrapper{
+.open-btn--wrapper.hidden {
+  display: none;
+}
+.sidebarnav--wrapper {
   height: 80%;
   width: 80%;
   display: flex;
@@ -57,14 +54,14 @@
   padding: 4vh 0;
 }
 
-.sidebarnav__links--wrapper{
+.sidebarnav__links--wrapper {
   flex-direction: column;
   display: flex;
   height: 100%;
   justify-content: space-around;
   align-items: center;
 }
-.links--wrapper{
+.links--wrapper {
   display: flex;
   flex-direction: column;
   height: 50%;
@@ -76,4 +73,30 @@
   border-radius: 16px;
   padding: 12px;
   border: 4px solid transparent;
+}
+
+/* Mobile Landscape */
+@media (orientation: landscape) and (max-height: 500px) {
+  .links--wrapper {
+    height: 70%;
+
+    font-size: 1.6rem;
+  }
+}
+
+/*  Laptop */
+@media (min-width: 1024px) {
+  .backdrop {
+    width: 80%;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease;
+  }
+  .sidebar--wrapper {
+    width: 20%;
+
+    transform: translateX(100%);
+    transition: transform 0.45s ease-in-out;
+  }
 }

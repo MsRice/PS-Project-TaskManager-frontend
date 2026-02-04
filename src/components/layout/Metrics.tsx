@@ -54,7 +54,7 @@ const Metrics = () => {
                     </div>
                     <div className='metric--progress-bar--wrapper'>
                         <div className='metric--progress-bar circular--progress-bar'>
-                            <CircularProgressbar value={metrics.percentage} text={`${metrics.percentage.toFixed(1)}%`} styles={{
+                            <CircularProgressbar value={metrics.percentage} strokeWidth={8} text={`${metrics.percentage.toFixed(1)}%`} styles={{
                                 path:{
                                     stroke: `rgba(234, 157, 41, ${metrics.percentage / 100})`,
                                     strokeLinecap: 'round',
@@ -62,7 +62,7 @@ const Metrics = () => {
                                 
                                 text: {
                                     fill: '#EA9D29',
-                                    fontSize: '1.2rem',
+                                    fontSize: '1.6rem',
                                     dominantBaseline: 'middle',
                                     textAnchor: 'middle'
                                 },

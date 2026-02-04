@@ -81,7 +81,7 @@ const Resgister = () => {
                         </button>
                     </div>
 
-                    <button type="submit">
+                    <button type="submit" className='primary-btn'>
                             Register
                     </button>
                    

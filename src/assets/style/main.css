@@ -1,93 +1,127 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 :root {
-  --bg-color: 241 ,241, 241;
+  --bg-color: 241, 241, 241;
   --card-bg: white;
-  --input-bg:white;
-  --nav-height: clamp(54px , 8vh , 72px);
-  --contact-height: clamp(70px , 8vh , 72px);
-  --xxlg-font: clamp(.9rem , 8vh , 1.2rem);
-  --xlg-font: clamp(.7rem , 8vh , 1rem);
-  --lg-font: clamp(.6rem , 8vh , .9rem);
-  --md-font: clamp(.5rem , 8vh , .8rem);
-  --sm-font: clamp(.4rem , 8vh , .6rem);
-  --xsm-font: clamp(.3rem , 8vh , .5rem);
-  --text-color: rgb(44,44,44);
-  --og-yellow: #EA9d29;
-  --bg-yellow: #F1C866;
+  --input-bg: white;
+  --nav-height: clamp(54px, 8vh, 72px);
+  --contact-height: clamp(70px, 8vh, 72px);
+  --xxlg-font: clamp(0.9rem, 8vh, 1.2rem);
+  --xlg-font: clamp(0.7rem, 8vh, 1rem);
+  --lg-font: clamp(0.6rem, 8vh, 0.9rem);
+  --md-font: clamp(0.5rem, 8vh, 0.8rem);
+  --sm-font: clamp(0.4rem, 8vh, 0.6rem);
+  --xsm-font: clamp(0.3rem, 8vh, 0.5rem);
+  --text-color: rgb(44, 44, 44);
+  --og-yellow: #ea9d29;
+  --bg-yellow: #f1c866;
   --box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
-  --button-shadow: 0 4px 12px  rgba(0, 0, 0, 0.6)
-  
-  /* --login-url: url() */
+  --button-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) /* --login-url: url() */;
 }
-[data-theme='dark'] {
-  --bg-color: 44,44,44;
+[data-theme="dark"] {
+  --bg-color: 44, 44, 44;
   --text-color: #eeeeee;
-  --card-bg: rgb(56,56,56);
-  --bg-yellow: #B38A2E;
+  --card-bg: rgb(56, 56, 56);
+  --bg-yellow: #b38a2e;
   --box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.6);
-  --button-shadow: 1px 2px  rgba(255, 255, 255, 0.6)
+  --button-shadow: 1px 2px rgba(255, 255, 255, 0.6);
 }
 
 body {
   background-color: rgb(var(--bg-color));
   color: var(--text-color);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
-ul{
-    list-style-type: none;
+ul {
+  list-style-type: none;
 }
-a{
+a {
   text-decoration: none;
 }
-li{
+li {
   list-style: none;
 }
-.container{
+.container {
   display: flex;
   position: relative;
   height: 100vh;
   height: 100dvh;
   width: 100%;
 }
-.row{
-    width: 100%;
+.row {
+  width: 100%;
 }
-.main__section--wrapper{
-    width: 100%;
-
+.main__section--wrapper {
+  width: 100%;
 }
-
-.walls--wrapper{
-    min-height: calc(100vh - var(--nav-height));
-    min-height: calc(100dvh - var(--nav-height));
-
+.error {
+  color: red;
 }
 
-.in-dev{
+.walls--wrapper {
+  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100dvh - var(--nav-height));
+}
+
+.in-dev {
   cursor: wait;
 }
-
 
 /* Mobile Landscape */
 @media (orientation: landscape) and (max-height: 500px) {
   :root {
-    --nav-height: clamp(38px , 8vh , 52px);
-    --contact-height: clamp(50px , 8vh , 62px);
+    --nav-height: clamp(38px, 8vh, 52px);
+    --contact-height: clamp(50px, 8vh, 62px);
   }
 }
 
 /*  Tablet */
-@media (min-width: 768px){}
+@media (min-width: 768px) {
+  :root {
+    --nav-height: clamp(42px, 10vh, 58px);
+    --contact-height: var(var(--xxlg-font));
+    --xxlg-font: clamp(1.2rem, 8vh, 1.7rem);
+    --xlg-font: clamp(1rem, 8vh, 1.3rem);
+    --lg-font: clamp(0.8rem, 8vh, 1.2rem);
+    --md-font: clamp(0.7rem, 8vh, 1rem);
+    --sm-font: clamp(0.6rem, 8vh, 0.8rem);
+    --xsm-font: clamp(0.5rem, 8vh, 0.7rem);
+  }
+}
 
 /*  Laptop */
-@media (min-width: 1024px){}
+@media (min-width: 1024px) {
+  :root {
+    --nav-height: clamp(52px, 10vh, 68px);
+    --contact-height: var(var(--xxlg-font));
+    --xxlg-font: clamp(1.5rem, 8vh, 1.9rem);
+    --xlg-font: clamp(1.3rem, 8vh, 1.6rem);
+    --lg-font: clamp(1.1rem, 8vh, 1.5rem);
+    --md-font: clamp(1rem, 8vh, 1.3rem);
+    --sm-font: clamp(0.9rem, 8vh, 1.1rem);
+    --xsm-font: clamp(0.8rem, 8vh, 1rem);
+  }
+}
 
 /*  Desktop */
-@media (min-width: 1280px){}
+@media (min-width: 1280px) {
+}
 /*  Large Screens */
-@media (min-width: 1536px) {}
+@media (min-width: 1536px) {
+  :root {
+    --nav-height: clamp(54px, 10vh, 70px);
+    --contact-height: var(var(--xxlg-font));
+    --xxlg-font: clamp(1.7rem, 8vh, 2.1rem);
+    --xlg-font: clamp(1.5rem, 8vh, 1.8rem);
+    --lg-font: clamp(1.3rem, 8vh, 1.7rem);
+    --md-font: clamp(1.2rem, 8vh, 1.5rem);
+    --sm-font: clamp(1.1rem, 8vh, 1.3rem);
+    --xsm-font: clamp(1rem, 8vh, 1.2rem);
+  }
+}

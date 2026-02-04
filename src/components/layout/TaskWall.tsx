@@ -23,7 +23,7 @@ const TaskWall = () => {
                         key={task._id} 
                         className={`
                             task__sp--wrapper ${!isOpen? 'more' : 'less'}
-                             ${openTasks[task._id + '-add'] ? 'expanded' : `${openTasks[task._id + '-add']}`}
+                             ${openTasks[task._id + '-add'] ? 'expanded' : ` `}
                             `} >
 
                     {!isOpen? <TaskLess task={task}/> : <TaskMore task={task} />}
@@ -41,7 +41,10 @@ const TaskWall = () => {
 
                 return(
 
-                    <div key={task._id} className={`task__sp--wrapper ${!isOpen? 'more' : 'less'}`} >
+                    <div key={task._id} className={`
+                        task__sp--wrapper ${!isOpen? 'more' : 'less'}
+                        ${openTasks[task._id + '-add'] ? 'expanded' : `${openTasks[task._id + '-add']}`}
+                    `} >
 
                     {!isOpen? <TaskLess task={task}/> : <TaskMore task={task} />}
                     </div>

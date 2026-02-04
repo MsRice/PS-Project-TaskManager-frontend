@@ -67,7 +67,7 @@ const Login = () => {
                     </div>
                     { error && <p>Incorrect Username, Email or Password</p> }
                         
-                    <button type="submit" className='btn'>Log In</button>
+                    <button type="submit" className='primary-btn'>Log In</button>
                 </form>
                 <div className='login-privacy--wrapper'>
                     <p className='login-privacy'>
