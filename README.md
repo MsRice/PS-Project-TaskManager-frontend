@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+## Table of contents
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [Overview](#overview)
+  - [Scenario](#scenario)
+  - [One Grain - Frontend](#one-grain---frontend)
+- [Design Philosophy](#design-philosophy)
+- [Tech Stack](#tech-stack)
+- [Design](#design)
+- [How to Run](#how-to-run)
+- [Author](#author)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project - Full-Stack MERN Application (Frontend)
 
-## React Compiler
+### Scenario
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+You are a full-stack developer hired by a growing startup to lead the development of their new flagship product, “Pro-Tasker”. The vision is to create a modern, collaborative project management tool that is intuitive for single users but powerful enough for small teams. The application must be built from the ground up using the MERN stack, showcasing a secure, robust, and feature-rich backend API, a dynamic and responsive React frontend, and a seamless deployment pipeline.
 
-## Expanding the ESLint configuration
+This capstone project is the culmination of your journey through the MERN stack curriculum. It is designed to challenge you to integrate everything you have learned — from backend architecture and database design to frontend state management and deployment — into a single, polished, and real-world application. You are expected to reuse and expand upon the patterns and code you developed in previous modules, particularly the “TaskMaster” API and the deployment labs.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### One Grain - Frontend
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+One Grain is a focused, minimalist task manager designed to help users make consistent progress—one small step at a time.
+The frontend is built with React + TypeScript and emphasizes clean state management, thoughtful UI patterns, and a calm, distraction-free experience.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+This repository contains the client-side application responsible for user interaction, task visualization, and API communication.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Framework: React
+- Language: TypeScript
+- Build Tool: Vite
+- Styling: CSS / modern layout utilities
+- State Management: React Hooks & Context
+- Routing: React Router
+- Date Utilities: date-fns / date-fns-tz
+- Linting & Formatting: ESLint + Prettier
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Design
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Early wireframes and UI explorations were created in Figma.
+👉 [View Figma Designs](https://www.figma.com/design/jQrXBrbDN2maz9HzxzcM1m/One-Grain?node-id=0-1&t=1WplzyO5TBzEkYvM-1)
+
+## How to Run
+
+- git clone https://github.com/MsRice/PS-Project-TaskManager-frontend.git
+- npm install
+- npm run dev
+- Alt Live on Render :
+
+## Author
+
+Patrice(Rice 🍚) Maxwell
+Backend & Full-Stack Software Engineer
+🌐([thegrainofrice.com](https://www.thegrainofrice.com/))
+💼([Linkedin](https://www.linkedin.com/in/patrice-maxwell))
+🌾 Grain of Rice — Building scalable systems one grain at a time
