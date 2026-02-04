@@ -6,13 +6,11 @@ export default function ModalProvider({children} :ModalProviderProps){
     const [isSidebarOpen , setIsSidebarOpen] = useState<boolean>(false)
 
     const toggleSidebarModal = (isSidebarOpen:boolean) => {
-        console.log(isSidebarOpen)
         setIsSidebarOpen(!isSidebarOpen)
     }
     const [isFormOpen , setIsFormOpen] = useState<boolean>(false)
 
     const toggleFormModal = (isFormOpen:boolean) => {
-        console.log(isFormOpen)
         setIsFormOpen(!isFormOpen)
     }
     

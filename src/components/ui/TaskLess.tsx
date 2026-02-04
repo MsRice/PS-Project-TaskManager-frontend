@@ -11,7 +11,7 @@ const TaskLess = ({task}:TaskUIProps) => {
     const { toggleTaskView} = useTheme()
     const {deleteTask , updateStatus} = useTasks()
 
-    console.log(task)
+    
 
    return (
         <div className='task--wrapper'>

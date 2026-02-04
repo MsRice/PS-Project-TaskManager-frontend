@@ -7,7 +7,6 @@ const TaskWall = () => {
     const { openTasks } = useTheme()
     const { taskList } = useTasks()
     
-    console.log(taskList)
     
     return (
         <div className='task-wall--wrapper'>

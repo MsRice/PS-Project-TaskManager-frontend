@@ -20,9 +20,7 @@ export default function TasksProvider({children}:TasksProviderProps){
         const currentUserId = user._id
 
         const gettaskList = async() => {
-            console.log('nt yep')
-            
-            console.log('nt', token)
+          
             
            
             try{
@@ -52,14 +50,12 @@ export default function TasksProvider({children}:TasksProviderProps){
     },[user, token])
 
 
-    console.log('hello mother nt' , user)
     
     const addTask = async (task:NewTask) => {
 
         
         if(!user || !token) return
 
-        console.log('nt', token)
 
         try {
             
@@ -164,7 +160,6 @@ export default function TasksProvider({children}:TasksProviderProps){
             const task = taskList.find(t => t._id === taskId)
             if (!task) return
           
-            console.log('NMCT' , todoId)
             const updatedTodos = task?.todos?.map(todo =>
                 todo._id === todoId
                     ? { ...todo, completed: !todo.completed }

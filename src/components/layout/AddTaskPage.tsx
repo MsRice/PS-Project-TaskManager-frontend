@@ -40,7 +40,6 @@ const AddTaskPage = () => {
             status:false,
             _id: user._id
         }
-        console.log(task)
         addTask(task)
         toggleFormModal(isFormOpen)
 

@@ -14,7 +14,7 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
     
     useEffect(() =>{
         
-        console.log('nt2', token)
+      
         
         if(!token) return
         
@@ -60,7 +60,6 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
     }
     
     const register = async (userData:Credentials) => {
-        console.log('nicts' , userData)
         const res  = await fetch(`${import.meta.env.VITE_API_URL}/api/users/registration`,{
             
             method:'POST',
@@ -73,7 +72,6 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
             throw new Error(error.message || 'Registration failed')
         }
         const {cred , token} = await res.json()
-        console.log('lb' , cred ,token)
         setUser(cred)
         setToken(token)  
         localStorage.setItem('token' , token)
@@ -85,7 +83,6 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
     }
     const addUserArea = async (area: Area) => {
         
-        console.log('ntlb' , area, user , token)
         if(!user || !token) return
         try {
             

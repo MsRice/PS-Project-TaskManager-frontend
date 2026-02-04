@@ -20,7 +20,6 @@ const Login = () => {
         const userData = { email , username, password }
 
         try {
-            console.log('NT',userData)
             await login(userData)
         } catch (error) {
             setError((error as Error).message)

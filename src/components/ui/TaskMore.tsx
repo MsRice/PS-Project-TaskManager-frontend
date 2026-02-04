@@ -25,7 +25,7 @@ const TaskMore = ({task}:TaskUIProps) => {
 
     const handleAddTodo = (taskId :string) =>{
         event?.preventDefault()
-        console.log(addText)
+
         addTodo(taskId , addText)
         setAddTaskModal(o => !o)
         setAddText('')
@@ -51,8 +51,7 @@ const TaskMore = ({task}:TaskUIProps) => {
         editTodo(taskId ,editingId , editText.trim())
         setEditingId(null)
     }
-    console.log(task)
-    
+  
     const openAddTodo = () => {
         setAddTaskModal(true)
         setOpenTasks(o => ({
