@@ -52,7 +52,11 @@ Early wireframes and UI explorations were created in Figma.
 ## Author
 
 Patrice(Rice 🍚) Maxwell
+
 Backend & Full-Stack Software Engineer
+
 🌐([thegrainofrice.com](https://www.thegrainofrice.com/))
+
 💼([Linkedin](https://www.linkedin.com/in/patrice-maxwell))
+
 🌾 Grain of Rice — Building scalable systems one grain at a time

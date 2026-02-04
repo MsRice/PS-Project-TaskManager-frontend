@@ -11,15 +11,15 @@ import ModalProvider from './contexts/modal/ModalProvider.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AuthenticationProvider>
-      <ModalProvider>
-        <ThemeProvider>
-          <TasksProvider>
-              <Router>
-                <App />
-              </Router>
-          </TasksProvider>
-        </ThemeProvider>
-      </ModalProvider>
+      <TasksProvider>
+        <ModalProvider>
+          <ThemeProvider>
+                <Router>
+                  <App />
+                </Router>
+          </ThemeProvider>
+        </ModalProvider>
+      </TasksProvider>
     </AuthenticationProvider>
 
   </StrictMode>,

@@ -1,14 +1,19 @@
+
 import { useEffect, useState } from 'react';
 import type { Area, AuthenticationProviderProps, Credentials, User } from '../../types';
 import { AuthenticationContext } from './AuthenticationContext';
 
 const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
     const [user , setUser] = useState<User | null>(null)
+    const [token, setToken] = useState<string | null>(null)
     
     
-
+    useEffect(() => {
+    setToken(localStorage.getItem('token'))
+    }, [])
+    
     useEffect(() =>{
-        const token = localStorage.getItem('token')
+        
         console.log('nt2', token)
         
         if(!token) return
@@ -34,7 +39,8 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
         }
     }
     refreshLogger()
-    },[])
+    },[token])
+
     const login = async (userData:Credentials) => {
         const res  = await fetch(`${import.meta.env.VITE_API_URL}/api/users/login`,{
 
@@ -49,7 +55,7 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
 
         const {user , token}  = await res.json()
         setUser(user)
-    
+        setToken(token)
         localStorage.setItem('token' , token)
     }
     
@@ -69,14 +75,16 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
         const {cred , token} = await res.json()
         console.log('lb' , cred ,token)
         setUser(cred)
+        setToken(token)  
         localStorage.setItem('token' , token)
     }
     const logout = () => {
         localStorage.removeItem('token')
         setUser(null)
+        setToken(null)
     }
     const addUserArea = async (area: Area) => {
-        const token = localStorage.getItem('token')
+        
         console.log('ntlb' , area, user , token)
         if(!user || !token) return
         try {
@@ -97,9 +105,20 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
             console.error(error);
         }
     }
+
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (!token) return;
+        const storedToken = localStorage.getItem("token")
+        if (storedToken) {
+            setToken(storedToken)
+        }
+    }, [])
+
+    useEffect(() => {
+        
+        if (!token) {
+            setUser(null)
+            return
+        }
 
         const hydrateUser = async () => {
             try {
@@ -116,13 +135,15 @@ const AuthenticationProvider = ({children}: AuthenticationProviderProps) => {
             } catch {
             localStorage.removeItem("token");
             setUser(null);
+            setToken(null)
             }
         };
 
         hydrateUser();
-    }, []);
+    }, [token]);
+
     return (
-        <AuthenticationContext.Provider value={{user , login, register, logout , addUserArea}}>
+        <AuthenticationContext.Provider value={{user, token, login, register, logout , addUserArea}}>
             {children}
         </AuthenticationContext.Provider>
     );

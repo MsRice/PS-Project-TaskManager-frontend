@@ -5,23 +5,32 @@ import { TasksContext } from './TasksContext';
 import { useAuthentication } from '../auth/AuthenticationContext';
 export default function TasksProvider({children}:TasksProviderProps){
 
-    const { user } = useAuthentication()
+    const { user , token } = useAuthentication()
     const [taskList , setTaskList] = useState<Task[]>([])
-    // const [userAreas , setUserAreas] = useState<Area[] | null>(null)
+ 
+
 
     useEffect(() =>{
+        if (!user || !token) {
+            setTaskList([])
+            return
+        }
+
+        const controller = new AbortController()
+        const currentUserId = user._id
 
         const gettaskList = async() => {
             console.log('nt yep')
-            const token = localStorage.getItem('token')
+            
             console.log('nt', token)
             
-            if(!token) return
+           
             try{
                 const res = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`,{
                     
                     method:'GET',
                     headers: { Authorization: `Bearer ${token}`},
+                    signal: controller.signal, 
                     
                 })
 
@@ -30,19 +39,24 @@ export default function TasksProvider({children}:TasksProviderProps){
                     throw new Error(error.message)
                 }
                 const tasks = await res.json()
-                setTaskList(tasks)
+                if (currentUserId === user._id) {
+                    setTaskList(tasks)
+                }
             }catch(error){
                 console.error(error);
             }
         }
+        setTaskList([])
         gettaskList()
-    },[])
+        return () => controller.abort()
+    },[user, token])
+
 
     console.log('hello mother nt' , user)
     
     const addTask = async (task:NewTask) => {
 
-        const token = localStorage.getItem('token')
+        
         if(!user || !token) return
 
         console.log('nt', token)
@@ -78,7 +92,7 @@ export default function TasksProvider({children}:TasksProviderProps){
     }
     
     const deleteTask = async (taskId: string ) => {
-        const token = localStorage.getItem('token')
+        
         if(!token) return
 
         try {
@@ -109,7 +123,7 @@ export default function TasksProvider({children}:TasksProviderProps){
     }
     
     const updateStatus = async (taskId: string , status: boolean ) => {
-        const token = localStorage.getItem('token')
+        
         if (!token) return
 
         try {
@@ -143,7 +157,7 @@ export default function TasksProvider({children}:TasksProviderProps){
     }
 
     const toggleTodo = async (taskId: string, todoId: string) => {
-        const token = localStorage.getItem('token')
+        
         if(!token) return
 
         try{
@@ -188,7 +202,7 @@ export default function TasksProvider({children}:TasksProviderProps){
 
     const addTodo = async (taskId:string , text:string) => {
 
-        const token = localStorage.getItem('token')
+        
         if(!user || !token) return
 
         const task = taskList.find(t => t._id === taskId)
@@ -228,7 +242,7 @@ export default function TasksProvider({children}:TasksProviderProps){
         todoId: string,
         text: string
     ) => {
-        const token = localStorage.getItem('token')
+        
         if(!user || !token) return
 
         const task = taskList.find(t => t._id === taskId)
@@ -269,7 +283,7 @@ export default function TasksProvider({children}:TasksProviderProps){
         taskId: string,
         todoId: string,
     ) => {
-        const token = localStorage.getItem('token')
+        
         if(!user || !token) return
 
         const task = taskList.find(t => t._id === taskId)
@@ -303,6 +317,8 @@ export default function TasksProvider({children}:TasksProviderProps){
         } catch (e) {
             console.error("Error adding document: ", e);
         }}
+
+       
 
      return (
         <TasksContext.Provider value={{ taskList, addTask, deleteTask, updateStatus ,toggleTodo ,addTodo ,editTodo, deleteTodo}}>

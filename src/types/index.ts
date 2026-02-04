@@ -36,6 +36,7 @@ export interface Credentials {
 
 export interface AuthContextType {
   user: User | null;
+  token: string | null;
   login: (userData: Credentials) => Promise<void>;
   register: (userData: Credentials) => Promise<void>;
   logout: () => void;
