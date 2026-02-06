@@ -6,6 +6,7 @@
 - [Design Philosophy](#design-philosophy)
 - [Tech Stack](#tech-stack)
 - [Design](#design)
+- [Production Deployment](#production-deployment)
 - [How to Run](#how-to-run)
 - [Author](#author)
 
@@ -40,7 +41,12 @@ This repository contains the client-side application responsible for user intera
 ## Design
 
 Early wireframes and UI explorations were created in Figma.
-👉 [View Figma Designs](https://www.figma.com/design/jQrXBrbDN2maz9HzxzcM1m/One-Grain?node-id=0-1&t=1WplzyO5TBzEkYvM-1)
+👉🏾 [View Figma Designs](https://www.figma.com/design/jQrXBrbDN2maz9HzxzcM1m/One-Grain?node-id=0-1&t=1WplzyO5TBzEkYvM-1)
+
+## Production Deployment
+
+👉🏾 [Check It Out Live](https://ps-project-taskmanager-frontend.onrender.com)
+👉🏾 [Working Backend](https://ps-project-taskmanager-backend.onrender.com)
 
 ## How to Run
 
